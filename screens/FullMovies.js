@@ -105,7 +105,7 @@ export const FullMoviesScreen = ({route}) => {
                     </View>
                 </View>
                 <View>
-                    {trailers && trailers.length && <YoutubePlayer height={300} play={true} videoId={trailers[0].key}/>}
+                    {trailers.length ? <YoutubePlayer height={300} play={true} videoId={trailers[0].key}/>: null}
                 </View>
             </MovieView>
         </ScrollView>
