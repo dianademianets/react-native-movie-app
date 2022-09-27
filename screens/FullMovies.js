@@ -80,7 +80,7 @@ export const FullMoviesScreen = ({route}) => {
                     alignItems: 'center',
                 }}>
                 <ActivityIndicator size='large'/>
-                <Text style={{marginTop: 15}}>Loading...</Text>
+                <Text style={{marginTop: 15, color:"snow"}}>Loading...</Text>
             </View>
         );
     }
