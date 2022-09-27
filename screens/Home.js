@@ -1,5 +1,12 @@
 import React from 'react';
-import {ActivityIndicator, Alert, RefreshControl, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {
+    ActivityIndicator,
+    Alert,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    View
+} from 'react-native';
 import styled from 'styled-components/native';
 
 import {moviesService} from '../services/movies.service';
@@ -11,10 +18,11 @@ const HomeContainer = styled.View`
 
 const HomeView = styled.View`
   margin: 20px 0 30px 10px;
+  justify-content: space-between;
 `;
 
 const HomeTitle = styled.Text`
-  margin: 10px;
+  margin:10px;
   text-align: center;
   color: snow;
   padding: 5px;
@@ -22,22 +30,12 @@ const HomeTitle = styled.Text`
   font-size: 20px;
 `;
 
-const wait = (timeout) => {
-    return new Promise(resolve => {
-        setTimeout(resolve, timeout);
-    });
-}
 
-export const  HomeScreen = ({navigation}) => {
+export const HomeScreen = ({navigation}) => {
+
     const [isLoading, setIsLoading] = React.useState(true);
     const [moviesPopular, setMoviesPopular] = React.useState([]);
     const [moviesRated, setMoviesRated] = React.useState([]);
-    const [refreshing, setRefreshing] = React.useState(false);
-
-    const onRefresh = React.useCallback(() => {
-        setRefreshing(true);
-        wait(1000).then(() => setRefreshing(false));
-    }, []);
 
     const fetchPopularMovie = () => {
         setIsLoading(true);
@@ -86,16 +84,21 @@ export const  HomeScreen = ({navigation}) => {
 
     return (
         <HomeContainer>
+
+
             <HomeView>
                 <HomeTitle>What's Popular Movies</HomeTitle>
-                <ScrollView horizontal={true}
-                            showsHorizontalScrollIndicator={false}
-                            refreshControl={
-                                <RefreshControl
-                                    refreshing={refreshing}
-                                    onRefresh={onRefresh}
-                                />
-                            }>
+                <ScrollView
+                    ref={(ref) => ref}
+                    horizontal={true}
+                    pagingEnabled
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                    decelerationRate={0}
+                >
                     {
                         moviesPopular.map((item) => (
                             <TouchableOpacity
@@ -107,12 +110,13 @@ export const  HomeScreen = ({navigation}) => {
                 <HomeTitle>What's Rated Movies</HomeTitle>
                 <ScrollView horizontal={true}
                             showsHorizontalScrollIndicator={false}
-                            refreshControl={
-                                <RefreshControl
-                                    refreshing={refreshing}
-                                    onRefresh={onRefresh}
-                                />
-                            }>
+                            pagingEnabled
+                            contentContainerStyle={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                            }}
+                            decelerationRate={0}
+                >
 
                     {
                         moviesRated.map((item) => (
