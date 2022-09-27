@@ -23,14 +23,6 @@ function HomeStackScreen() {
                 },
             }}/>
 
-            <HomeStack.Screen name='Movies' component={MoviesScreen} options={{
-                title: 'Movies', headerStyle: {
-                    backgroundColor: '#040C18',
-                }, headerTintColor: '#fff',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                },
-            }}/>
 
             <HomeStack.Screen name='FullMovies' component={FullMoviesScreen} options={{
                 title: 'Details', headerStyle: {
@@ -49,14 +41,6 @@ function MoviesStackScreen() {
         <MoviesStack.Navigator>
             <MoviesStack.Screen name='Movies' component={MoviesScreen} options={{
                 title: 'Movies', headerStyle: {
-                    backgroundColor: '#040C18',
-                }, headerTintColor: '#fff',
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                },
-            }}/>
-            <MoviesStack.Screen name='Home' component={HomeScreen} options={{
-                title: 'Home', headerStyle: {
                     backgroundColor: '#040C18',
                 }, headerTintColor: '#fff',
                 headerTitleStyle: {
