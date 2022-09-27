@@ -41,15 +41,13 @@ const truncateTitle = (str) => {
 
 export const Movie = ({item}) => {
 
-    const {original_title, imageUrl} = item;
-
     return (
         <WrapperView>
             <ContainerImage>
-                <MovieImage source={{uri: `https://image.tmdb.org/t/p/w200${imageUrl}`}}/>
+                <MovieImage source={{uri: `https://image.tmdb.org/t/p/w300${item.poster_path}`}}/>
             </ContainerImage>
             <MovieDetails>
-                <MovieTitle>{truncateTitle(original_title)}</MovieTitle>
+                <MovieTitle>{truncateTitle(item.original_title)}</MovieTitle>
             </MovieDetails>
         </WrapperView>
     );
