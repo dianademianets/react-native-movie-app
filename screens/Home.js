@@ -100,7 +100,7 @@ export const  HomeScreen = ({navigation}) => {
                         moviesPopular.map((item) => (
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('FullMovies', {id: item.id})}>
-                                <Movie original_title={item.original_title} imageUrl={item.poster_path}/>
+                                <Movie key={item.id} item={item}/>
                             </TouchableOpacity>
                         ))}
                 </ScrollView>
@@ -113,11 +113,12 @@ export const  HomeScreen = ({navigation}) => {
                                     onRefresh={onRefresh}
                                 />
                             }>
+
                     {
                         moviesRated.map((item) => (
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('FullMovies', {id: item.id})}>
-                                <Movie original_title={item.original_title} imageUrl={item.poster_path}/>
+                                <Movie key={item.id} item={item}/>
                             </TouchableOpacity>
                         ))}
                 </ScrollView>

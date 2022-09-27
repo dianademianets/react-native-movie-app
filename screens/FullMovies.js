@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ActivityIndicator, Alert, ScrollView, Text, View} from 'react-native';
 import styled from 'styled-components/native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
@@ -41,20 +41,50 @@ const MovieText = styled.Text`
 export const FullMoviesScreen = ({route}) => {
 
     const {id} = route.params;
+    const [isLoading, setIsLoading] = React.useState(true);
     const [movies, setMovie] = React.useState([]);
     const [trailers, setTrailers] = React.useState([]);
 
     React.useEffect(() => {
+        setIsLoading(true);
         moviesService.getById(id).then(({data}) => {
             setMovie(data);
-        });
+        }).catch((err) => {
+            console.log(err);
+            Alert.alert('Error', `error`);
+        })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, [id]);
 
     React.useEffect(() => {
+        setIsLoading(true);
         moviesService.getVideo(id).then(({data}) => {
             setTrailers(data.results);
-        });
+        }).catch((err) => {
+            console.log(err);
+            Alert.alert('Error', `error`);
+        })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, [id]);
+
+    if (isLoading) {
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                <ActivityIndicator size='large'/>
+                <Text style={{marginTop: 15}}>Loading...</Text>
+            </View>
+        );
+    }
+
 
     return (
         <ScrollView horizontal={false} showsVerticalScrollIndicator={false}

@@ -33,6 +33,7 @@ const MoviesContainer = styled.View`
   justify-content: center;
   column-gap: 20px;
 `;
+
 const ButtonView = styled.View`
   flex-direction: row;
   justify-content: center;
@@ -122,7 +123,7 @@ export const MoviesScreen = ({navigation}) => {
                             movies.map((item) => (
                                 <TouchableOpacity
                                     onPress={() => navigation.navigate('FullMovies', {id: item.id})}>
-                                    <Movie original_title={item.original_title} imageUrl={item.poster_path}/>
+                                    <Movie key={item.id} item={item}/>
                                 </TouchableOpacity>
                             ))}
                     </MoviesContainer>

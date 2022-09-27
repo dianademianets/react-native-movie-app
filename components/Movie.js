@@ -39,7 +39,10 @@ const truncateTitle = (str) => {
 };
 
 
-export const Movie = ({original_title, imageUrl}) => {
+export const Movie = ({item}) => {
+
+    const {original_title, imageUrl} = item;
+
     return (
         <WrapperView>
             <ContainerImage>
