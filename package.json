@@ -19,7 +19,7 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-instantsearch-native": "^6.33.0",
-    "react-native": "0.69.5",
+    "react-native": "0.69.6",
     "react-native-auto-scroll-view": "^1.0.1",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~2.5.0",
@@ -31,6 +31,7 @@
     "react-native-video": "^5.2.1",
     "react-native-web": "~0.18.7",
     "react-native-web-webview": "^1.0.2",
+    "react-native-webview": "^11.23.1",
     "react-native-youtube-iframe": "^2.2.2",
     "styled-components": "^5.3.5"
   },
